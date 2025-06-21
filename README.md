@@ -1,2 +1,11 @@
-# Causal-preconditioning-FxLMS
-Code for causal preconditioning filters design for real-time multichannel active noise control when using FxLMS
+# Causal Preconditioning for Real-Time Multichannel ANC
+
+This repository is reserved for the code associated with the paper:
+
+**"Causal Preconditioning Filters Design for Real-Time Multichannel Active Noise Control"**
+
+Authors: Yiming Wang, Yongjie Zhuang, Yangfan Liu
+
+📌 **The code and documentation will be released here upon acceptance of the paper.**
+
+Stay tuned!
