@@ -3,9 +3,10 @@
 This repository is reserved for the code associated with the paper:
 
 **"Causal Preconditioning Filters Design for Real-Time Multichannel Active Noise Control"**
+50 days free access link: https://authors.elsevier.com/a/1lVwp,5Mxwwgy
 
 Authors: Yiming Wang, Yongjie Zhuang, Yangfan Liu
 
-📌 **The code and documentation will be released here upon acceptance of the paper.**
+📌 **We are releasing the code and documentation shortly.**
 
-Stay tuned!
+We will have two versions of the code: written in Matlab .m files and the Python scripts.
