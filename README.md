@@ -1,12 +1,57 @@
-# Causal Preconditioning for Real-Time Multichannel ANC
+# Causal Preconditioning Filters Design for Real-Time Multichannel ANC
 
-This repository is reserved for the code associated with the paper:
+This repository contains the code accompanying the paper:
 
-**"Causal Preconditioning Filters Design for Real-Time Multichannel Active Noise Control"**
-50 days free access link: https://authors.elsevier.com/a/1lVwp,5Mxwwgy
+> **Yiming Wang, Yongjie Zhuang, and Yangfan Liu**, "Causal Preconditioning Filters Design for Real-Time Multichannel Active Noise Control", *Applied Acoustics*, 2025.
+Here is a free access link that expires on September 16, 2025: https://authors.elsevier.com/a/1lVwp,5Mxwwgy
 
-Authors: Yiming Wang, Yongjie Zhuang, Yangfan Liu
+The code implements causal preconditioning filters for multichannel active noise control (ANC), including both **MATLAB** and **Python** versions. You can pick the version that you prefer. Both versions should generate the same results (potentially some numerical precision differences).
 
-📌 **We are releasing the code and documentation shortly.**
+---
 
-We will have two versions of the code: written in Matlab .m files and the Python scripts.
+## Folder Structure
+
+.
+├── LICENSE
+├── README.md <-- this file
+├── matlab/ <-- MATLAB implementation
+│ ├── src/ <-- main algorithms
+│ ├── example/ <-- example usage and figure outputs
+│ └── README.md <-- MATLAB-specific instructions
+└── python/ <-- Python implementation
+├── src/ <-- main algorithms
+└── README.md <-- Python-specific instructions
+
+---
+
+## Quick Start
+
+### MATLAB Version
+1. Navigate to the `matlab/example` folder.
+2. Open `example.m` in MATLAB and directly run the `example.m` file.
+Figures will be generated and saved in example/figures.
+(See Matlab/README.md for more details.)
+
+Python Version
+(See python/README.md for details.)
+
+License
+This repository is released under the MIT License.
+
+Citation
+If you use this code in your research, please cite:
+
+bibtex
+Copy
+Edit
+@article{WANG2025110950,
+title = {Causal preconditioning filters design for real-time multichannel active noise control},
+author = {Yiming Wang and Yongjie Zhuang and Yangfan Liu},
+journal = {Applied Acoustics},
+volume = {240},
+pages = {110950},
+year = {2025},
+issn = {0003-682X},
+doi = {https://doi.org/10.1016/j.apacoust.2025.110950},
+url = {https://www.sciencedirect.com/science/article/pii/S0003682X25004220},
+}
