@@ -5,8 +5,10 @@
 % "Causal preconditioning filters design for real-time multichannel ANC"
 
 clear; close all; clc;
-% --- Add src to MATLAB path ---
-addpath(fullfile(fileparts(mfilename('fullpath')),'..','src'));
+% --- Get the paths ---
+example_dir = fileparts(mfilename('fullpath'));   % folder containing example.m
+addpath(fullfile(example_dir,'..','src')); % add the src folder
+save_path = fullfile(example_dir,'figures');    
 
 %% Parameters
 % the following parameters are defined as the same in the paper
@@ -46,7 +48,7 @@ h_Ge(N2,2,1) = l1/l2;
 h_Ge(N1,2,2) = 1;
 
 %% --- Compute preconditioning filters ---
-[Fxx_inv, Ge_min_inv, Ge_all] = precond_obtain_filter(Fxx,h_Ge,N_Finv,N_mininv,plot_flag);
+[Fxx_inv, Ge_min_inv, Ge_all] = precond_obtain_filter(Fxx,h_Ge,N_Finv,N_mininv,plot_flag,save_path);
 
 disp(Fxx_inv)
 disp(Ge_min_inv)

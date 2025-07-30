@@ -6,7 +6,19 @@
 % N_Finv: length of filter to estimate the inverse of Fxx
 % N_mininv: length of filter to estimate the inverse of Ge_min and Ge_all
 % fig_flag: 1: plot, 0: do not plot
-function [Fxx_inv,Ge_min_inv,Ge_all]= precond_obtain_filter(Fxx,h_Ge,N_Finv,N_mininv,plot_flag)
+% save_path: optional for figure saving
+function [Fxx_inv,Ge_min_inv,Ge_all]= precond_obtain_filter(Fxx,h_Ge,N_Finv,N_mininv,plot_flag,save_path)
+%% for figure save
+if nargin < 6
+    save_path = '';
+end
+
+if ~isempty(save_path)
+    if ~exist(save_path,'dir')
+        mkdir(save_path);
+    end
+end
+
 %% obtain dimension and check input data
 [N_xx,Nr,Nr2] = size(Fxx);
 [N_Ge,Ne,Ns] = size(h_Ge);
@@ -71,8 +83,12 @@ if plot_flag
             grid on
         end
     end
-    legend('Measured','Fitted')
-    
+    lgd = legend({'Measured','Fitted'});
+    lgd.Layout.Tile = 'north';
+    if ~isempty(save_path)
+        exportgraphics(gcf, fullfile(save_path,'Inverse_Fxx_FreqResp.png'),'Resolution',300);
+    end
+
     % impulse response plot
     figure
     for ii = 1:Nr
@@ -85,6 +101,9 @@ if plot_flag
             ylabel('Amplitude');
             grid on;
         end
+    end
+    if ~isempty(save_path)
+        exportgraphics(gcf, fullfile(save_path,'Inverse_Fxx_ImpulseResp.png'),'Resolution',300);
     end
 end
 
@@ -169,7 +188,11 @@ if plot_flag
             grid on
         end
     end
-    legend('Measured','Fitted')
+    lgd = legend({'Measured','Fitted'});
+    lgd.Layout.Tile = 'north';
+    if ~isempty(save_path)
+        exportgraphics(gcf, fullfile(save_path,'Inverse_Gmin_FreqResp.png'),'Resolution',300);
+    end
 
     % impulse response plot
     figure
@@ -183,6 +206,9 @@ if plot_flag
             ylabel('Amplitude');
             grid on;
         end
+    end
+    if ~isempty(save_path)
+        exportgraphics(gcf, fullfile(save_path,'Inverse_Gmin_ImpulseResp.png'),'Resolution',300);
     end
 end
 
@@ -240,7 +266,11 @@ if plot_flag
             grid on
         end
     end
-    legend('Measured','Fitted')
+    lgd = legend({'Measured','Fitted'});
+    lgd.Layout.Tile = 'north';
+    if ~isempty(save_path)
+        exportgraphics(gcf, fullfile(save_path,'G_all_FreqResp.png'),'Resolution',300);
+    end
 
     % impulse response plot
     figure
@@ -254,6 +284,9 @@ if plot_flag
             ylabel('Amplitude');
             grid on;
         end
+    end
+    if ~isempty(save_path)
+        exportgraphics(gcf, fullfile(save_path,'G_all_ImpulseResp.png'),'Resolution',300);
     end
 end
 
