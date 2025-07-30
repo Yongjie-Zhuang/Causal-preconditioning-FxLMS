@@ -35,29 +35,45 @@ for ii = 1:Nr
     for jj = 1:Nr
         H_measure = squeeze(Fxx_freq(ii,jj,:));
         Fxx_inv(:,ii,jj) = invfreqz(H_measure,w,N_Finv-1,0);
-        if plot_flag
-            [H_fit,w] = freqz(Fxx_inv(:,ii,jj),1,N_Finv*den_fac);
-            figure
-            subplot 211
-            plot(w,abs(H_measure),'r-',LineWidth=2)
-            hold on
-            plot(w,abs(H_fit),'b--',LineWidth=2)
-            xlabel('Frequency (Hz)')
-            ylabel('Magnitude')
-            legend('Measured','Fitted')
-            title(['Inverse of Fxx: ' num2str(ii) ' ' num2str(jj)])
-            subplot 212
-            plot(w,angle(H_measure),'r-',LineWidth=2)
-            hold on
-            plot(w,angle(H_fit),'b--',LineWidth=2)
-            xlabel('Frequency (Hz)')
-            ylabel('phase')
-            legend('Measured','Fitted')
-        end
     end
 end
 
 if plot_flag
+    % frequency plot
+    % get a large plot
+    figure('Units','normalized','Position',[0.1 0.1 0.8 0.8])
+    figureH = tiledlayout(Nr, Nr*2);
+    title(figureH, 'Inverse of Fxx Frequency Response')
+    for ii = 1:Nr
+        for jj = 1:Nr
+            idx = (ii-1)*Nr + jj;
+            % Magnitude subplot
+            nexttile((idx-1)*2+1)
+            [H_fit, w] = freqz(Fxx_inv(:,ii,jj), 1, N_Finv*den_fac);
+            H_measure = squeeze(Fxx_freq(ii,jj,:));
+            plot(w, 20*log10(abs(H_measure)), 'r-', 'LineWidth', 2)
+            hold on
+            plot(w, 20*log10(abs(H_fit)), 'b--', 'LineWidth', 2)
+            xlabel('Frequency (rad/sample)')
+            ylabel('Magnitude (dB)')
+            title(['Mag: (' num2str(ii) ',' num2str(jj) ')'])
+            grid on
+
+            % Phase subplot
+            nexttile((idx-1)*2+2)
+            plot(w, angle(H_measure), 'r-', 'LineWidth', 2)
+            hold on
+            plot(w, angle(H_fit), 'b--', 'LineWidth', 2)
+            xlabel('Frequency (rad/sample)')
+            ylabel('Phase (rad)')
+            ylim([-pi,pi])
+            title(['Phase: (' num2str(ii) ',' num2str(jj) ')'])
+            grid on
+        end
+    end
+    legend('Measured','Fitted')
+    
+    % impulse response plot
     figure
     for ii = 1:Nr
         for jj = 1:Nr
@@ -71,6 +87,7 @@ if plot_flag
         end
     end
 end
+
 
     
 %% Fit G_min
@@ -118,34 +135,49 @@ for ii = 1:Ns
     for jj = 1:Ns
         H_measure = squeeze(Ge_min_freq(ii,jj,:));
         Ge_min_inv(:,ii,jj) = invfreqz(H_measure,w,N_mininv-1,0);
-        if plot_flag
-            [H_fit,w] = freqz(Ge_min_inv(:,ii,jj),1,N_mininv*den_fac);
-            figure
-            subplot 211
-            plot(w,abs(H_measure),'r-',LineWidth=2)
-            hold on
-            plot(w,abs(H_fit),'b--',LineWidth=2)
-            xlabel('Frequency (Hz)')
-            ylabel('Magnitude')
-            legend('Measured','Fitted')
-            title(['Inverse of G min: ' num2str(ii) ' ' num2str(jj)])
-            subplot 212
-            plot(w,angle(H_measure),'r-',LineWidth=2)
-            hold on
-            plot(w,angle(H_fit),'b--',LineWidth=2)
-            xlabel('Frequency (Hz)')
-            ylabel('phase')
-            legend('Measured','Fitted')
-        end
     end
 end
 if plot_flag
+    % frequency plot
+    figure('Units','normalized','Position',[0.1 0.1 0.8 0.8])
+    figureH = tiledlayout(Ns, Ns*2);
+    title(figureH, 'Inverse of G_{min} Frequency Response')
+    for ii = 1:Ns
+        for jj = 1:Ns
+            idx = (ii-1)*Ns + jj;
+            % Magnitude subplot
+            nexttile((idx-1)*2+1)
+            [H_fit, w] = freqz(Ge_min_inv(:,ii,jj), 1, N_mininv*den_fac);
+            H_measure = squeeze(Ge_min_freq(ii,jj,:));
+            plot(w, 20*log10(abs(H_measure)), 'r-', 'LineWidth', 2)
+            hold on
+            plot(w, 20*log10(abs(H_fit)), 'b--', 'LineWidth', 2)
+            xlabel('Frequency (rad/sample)')
+            ylabel('Magnitude (dB)')
+            title(['Mag: (' num2str(ii) ',' num2str(jj) ')'])
+            grid on
+
+            % Phase subplot
+            nexttile((idx-1)*2+2)
+            plot(w, angle(H_measure), 'r-', 'LineWidth', 2)
+            hold on
+            plot(w, angle(H_fit), 'b--', 'LineWidth', 2)
+            xlabel('Frequency (rad/sample)')
+            ylabel('Phase (rad)')
+            ylim([-pi,pi])
+            title(['Phase: (' num2str(ii) ',' num2str(jj) ')'])
+            grid on
+        end
+    end
+    legend('Measured','Fitted')
+
+    % impulse response plot
     figure
     for ii = 1:Ns
         for jj = 1:Ns
             idx = (ii-1)*Ns + jj;    % subplot index
             subplot(Ns, Ns, idx);    % create Ns x Ns grid of subplots
-            plot(Ge_min_inv(:,ii,jj), 'LineWidth', 2);
+            plot(Ge_min_inv(:,ii,jj),'LineWidth',2);
             title(['G_{min}^{-1}: ' num2str(ii) ' ' num2str(jj)]);
             xlabel('Samples');
             ylabel('Amplitude');
@@ -153,6 +185,7 @@ if plot_flag
         end
     end
 end
+
 
 %% fit G_all
 Ge_freq = zeros(Ne,Ns,N_mininv*den_fac);
@@ -173,28 +206,43 @@ for ii = 1:Ne
     for jj = 1:Ns
         H_measure = squeeze(Ge_all_freq(ii,jj,:));
         Ge_all(:,ii,jj) = invfreqz(H_measure,w,N_mininv-1,0);
-        if plot_flag
-            [H_fit,w] = freqz(Ge_all(:,ii,jj),1,N_mininv*den_fac);
-            figure
-            subplot 211
-            plot(w,abs(H_measure),'r-',LineWidth=2)
-            hold on
-            plot(w,abs(H_fit),'b--',LineWidth=2)
-            xlabel('Frequency (Hz)')
-            ylabel('Magnitude')
-            legend('Measured','Fitted')
-            title(['Ge_{all}:' num2str(ii) ' ' num2str(jj)])
-            subplot 212
-            plot(w,angle(H_measure),'r-',LineWidth=2)
-            hold on
-            plot(w,angle(H_fit),'b--',LineWidth=2)
-            xlabel('Frequency (Hz)')
-            ylabel('phase')
-            legend('Measured','Fitted')
-        end
     end
 end
 if plot_flag
+    % frequency plot
+    figure('Units','normalized','Position',[0.1 0.1 0.8 0.8])
+    figureH = tiledlayout(Ne, Ns*2);
+    title(figureH, 'Ge_{all} Frequency Response')
+    for ii = 1:Ne
+        for jj = 1:Ns
+            idx = (ii-1)*Ns + jj;
+            % Magnitude subplot
+            nexttile((idx-1)*2+1)
+            [H_fit, w] = freqz(Ge_all(:,ii,jj), 1, N_mininv*den_fac);
+            H_measure = squeeze(Ge_all_freq(ii,jj,:));
+            plot(w, 20*log10(abs(H_measure)), 'r-', 'LineWidth', 2)
+            hold on
+            plot(w, 20*log10(abs(H_fit)), 'b--', 'LineWidth', 2)
+            xlabel('Frequency (rad/sample)')
+            ylabel('Magnitude (dB)')
+            title(['Mag: (' num2str(ii) ',' num2str(jj) ')'])
+            grid on
+
+            % Phase subplot
+            nexttile((idx-1)*2+2)
+            plot(w, angle(H_measure), 'r-', 'LineWidth', 2)
+            hold on
+            plot(w, angle(H_fit), 'b--', 'LineWidth', 2)
+            xlabel('Frequency (rad/sample)')
+            ylabel('Phase (rad)')
+            ylim([-pi,pi])
+            title(['Phase: (' num2str(ii) ',' num2str(jj) ')'])
+            grid on
+        end
+    end
+    legend('Measured','Fitted')
+
+    % impulse response plot
     figure
     for ii = 1:Ne
         for jj = 1:Ns
@@ -208,5 +256,6 @@ if plot_flag
         end
     end
 end
+
 
 end
