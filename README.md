@@ -41,10 +41,10 @@ Figures will be generated and saved in example/figures.
 ### Python Version
 (See python/README.md for details.)
 
-License
-This repository is released under the MIT License.
+### License
+This repository is released under the [MIT License](LICENSE).
 
-Citation
+### Citation
 If you use this code in your research, please cite:
 
 ```text
