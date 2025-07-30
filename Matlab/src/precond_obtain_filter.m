@@ -45,7 +45,7 @@ for ii = 1:Nr
             xlabel('Frequency (Hz)')
             ylabel('Magnitude')
             legend('Measured','Fitted')
-            title(['Inverse of Fxx for ' num2str(ii) ' ref and ' num2str(jj) ' ref'])
+            title(['Inverse of Fxx: ' num2str(ii) ' ' num2str(jj)])
             subplot 212
             plot(w,angle(H_measure),'r-',LineWidth=2)
             hold on
@@ -64,7 +64,7 @@ if plot_flag
             idx = (ii-1)*Nr + jj;    % subplot index
             subplot(Nr, Nr, idx);    % create Nr x Nr grid of subplots
             plot(Fxx_inv(:,ii,jj),'LineWidth',2);
-            title(['Inverse Fxx: ref ' num2str(ii) ' ref ' num2str(jj)]);
+            title(['Inverse Fxx: ' num2str(ii) ' ' num2str(jj)]);
             xlabel('Samples');
             ylabel('Amplitude');
             grid on;
@@ -128,7 +128,7 @@ for ii = 1:Ns
             xlabel('Frequency (Hz)')
             ylabel('Magnitude')
             legend('Measured','Fitted')
-            title(['Inverse of G min for ' num2str(ii) ' ref and ' num2str(jj) ' ref'])
+            title(['Inverse of G min: ' num2str(ii) ' ' num2str(jj)])
             subplot 212
             plot(w,angle(H_measure),'r-',LineWidth=2)
             hold on
@@ -146,7 +146,7 @@ if plot_flag
             idx = (ii-1)*Ns + jj;    % subplot index
             subplot(Ns, Ns, idx);    % create Ns x Ns grid of subplots
             plot(Ge_min_inv(:,ii,jj), 'LineWidth', 2);
-            title(['G_{min}^{-1}: src ' num2str(ii) ' src ' num2str(jj)]);
+            title(['G_{min}^{-1}: ' num2str(ii) ' ' num2str(jj)]);
             xlabel('Samples');
             ylabel('Amplitude');
             grid on;
@@ -183,7 +183,7 @@ for ii = 1:Ne
             xlabel('Frequency (Hz)')
             ylabel('Magnitude')
             legend('Measured','Fitted')
-            title(['Ge all for ' num2str(ii) ' ref and ' num2str(jj) ' ref'])
+            title(['Ge_{all}:' num2str(ii) ' ' num2str(jj)])
             subplot 212
             plot(w,angle(H_measure),'r-',LineWidth=2)
             hold on
@@ -201,7 +201,7 @@ if plot_flag
             idx = (ii-1)*Ns + jj;     % subplot index
             subplot(Ne, Ns, idx);     % create Ne x Ns grid of subplots
             plot(Ge_all(:,ii,jj), 'LineWidth', 2);
-            title(['G_{all}: err ' num2str(ii) ' src ' num2str(jj)]);
+            title(['G_{all}: ' num2str(ii) ' ' num2str(jj)]);
             xlabel('Samples');
             ylabel('Amplitude');
             grid on;
