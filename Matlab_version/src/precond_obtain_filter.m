@@ -113,7 +113,7 @@ end
 GeGe = zeros(2*N_Ge-1,Ns,Ns);
 for ii = 1:Ns
     for jj = ii:Ns
-        for kk = 1:Ns
+        for kk = 1:Ne
             GeGe(:,ii,jj) = GeGe(:,ii,jj)+ conv(flip(h_Ge(:,kk,ii)),h_Ge(:,kk,jj));
         end
     end
