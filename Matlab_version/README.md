@@ -12,7 +12,7 @@ This folder contains the MATLAB implementation of **causal preconditioning filte
 
 ## Folder Structure
 ```text
-matlab/
+Matlab_version/
 ├── src/             <-- core algorithms
 │   ├── precond_obtain_filter.m
 │   ├── mul_specFact.m
