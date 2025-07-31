@@ -19,12 +19,13 @@ including both **MATLAB** and **Python** versions. Both versions are expected to
 .
 ├── LICENSE
 ├── README.md                <-- this file
-├── matlab/                  <-- MATLAB implementation
+├── Matlab_version/          <-- MATLAB implementation
 │   ├── src/                 <-- main algorithms
 │   ├── example/             <-- example usage and figure outputs
 │   └── README.md            <-- MATLAB-specific instructions
-└── python/                  <-- Python implementation
+└── Python_version/          <-- Python implementation
     ├── src/                 <-- main algorithms
+    ├── example/             <-- example usage and figure outputs
     └── README.md            <-- Python-specific instructions
 ```
 
@@ -33,12 +34,15 @@ including both **MATLAB** and **Python** versions. Both versions are expected to
 ## Quick Start
 
 ### MATLAB Version
-1. Navigate to the `matlab/example` folder.
+1. Navigate to the `Matlab_version/example` folder.
 2. Open `example.m` in MATLAB and directly run the `example.m` file.
 Figures will be generated and saved in example/figures.
 (See Matlab/README.md for more details.)
 
 ### Python Version
+1. Navigate to the `Python_version/example` folder.
+2. Open `example.py` and directly run the `example.py` file.
+Figures will be generated and saved in example/figures.
 (See python/README.md for details.)
 
 ### License
