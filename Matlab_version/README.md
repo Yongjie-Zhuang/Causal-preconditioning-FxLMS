@@ -33,7 +33,7 @@ Matlab_version/
     - Generate magnitude/phase and impulse response figures.
     - Save all figures automatically to matlab/example/figures.
 5. In the example code, the secondary path was set to the same setup as in the paper. You can compare the all-pass component of the secondary path with the analytical solution: only the 6th coefficients of the diagonal elements in G_{all pass} impulse response matrix are 1, the other elements should be close to 0:
-[Impulse response plot of the decomposed all-pass filter for secondary path matrix](Matlab_version/examples/figures/G_all_FreqResp.png)
+[Impulse response plot of the decomposed all-pass filter for secondary path matrix](https://github.com/Yongjie-Zhuang/Causal-preconditioning-FxLMS/blob/main/Matlab_version/examples/figures/G_all_ImpulseResp.png)
 
 ### License
 This repository is released under the [MIT License](LICENSE).
