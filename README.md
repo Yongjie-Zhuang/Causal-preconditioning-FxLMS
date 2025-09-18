@@ -4,9 +4,10 @@ This repository contains the code accompanying the paper:
 
 > **Yiming Wang, Yongjie Zhuang, and Yangfan Liu**,  
 > "Causal Preconditioning Filters Design for Real-Time Multichannel Active Noise Control",  
-> *Applied Acoustics*, 2025.  
-> Here is a free access link (valid until September 16, 2025):  
-> [https://authors.elsevier.com/a/1lVwp,5Mxwwgy](https://authors.elsevier.com/a/1lVwp,5Mxwwgy)
+> *Applied Acoustics*, 2025.
+> DOI: https://doi.org/10.1016/j.apacoust.2025.110950
+> Here is a preprint:
+> [https://yongjie-zhuang.com/files/preprint_2025_preconditioning_ANC.pdf](https://yongjie-zhuang.com/files/preprint_2025_preconditioning_ANC.pdf)
 
 The code implements causal preconditioning filters for multichannel active noise control (ANC),  
 including both **MATLAB** and **Python** versions. Both versions are expected to produce the same results  
